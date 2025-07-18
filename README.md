@@ -1,102 +1,135 @@
-Here's an improved, well-structured README.md file that you can directly copy into your repository:
+# 🛍️ ShopSmart - Customer Segmentation & Behavior Profiling
 
-```markdown
-# Customer Segmentation & Product Recommendation System for E-Commerce
+ShopSmart is an end-to-end customer segmentation project that utilizes unsupervised learning to cluster customer behaviors from transaction data. The goal is to help e-commerce businesses personalize marketing, identify loyalty tiers, and improve decision-making.
 
-![E-Commerce Analytics](https://img.shields.io/badge/Data-Science-blue)
-![Python](https://img.shields.io/badge/Python-3.11%2B-green)
-![License](https://img.shields.io/badge/License-MIT-lightgrey)
+---
 
-## 📌 Table of Contents
-- [Project Overview](#-project-overview)
-- [Dataset](#-dataset)
-- [Workflow](#-workflow)
-- [Key Insights](#-key-insights)
-- [Cluster Profiles](#-cluster-profiles)
-- [Visualizations](#-visualizations)
-- [Recommendation System](#-recommendation-system)
-- [Installation](#-installation)
-- [Usage](#-usage)
-- [Future Improvements](#-future-improvements)
-- [License](#-license)
+## 🚀 Project Overview
 
-## 🌟 Project Overview
-This project analyzes e-commerce transaction data to:
-1. Segment customers into distinct groups using clustering techniques
-2. Generate personalized product recommendations
-3. Provide actionable insights for targeted marketing strategies
+This notebook explores a real-world e-commerce dataset, applying preprocessing, outlier removal, dimensionality reduction (PCA), and clustering (KMeans). The clusters are interpreted with visual aids like radar charts and PCA projections for actionable insights.
 
-Built with Python using:
-- Pandas for data manipulation
-- Scikit-learn for machine learning
-- Matplotlib/Seaborn for visualization
+---
 
-## 📂 Dataset
-**Source:** [Kaggle E-Commerce Data](https://www.kaggle.com/datasets/)
+## 📦 Dataset Description
 
-| Feature | Description |
-|---------|-------------|
-| `InvoiceNo` | Transaction ID ('C' prefix = cancellations) |
-| `StockCode` | Product identifier |
-| `Description` | Product name |
-| `Quantity` | Units purchased (negative = returns) |
-| `InvoiceDate` | Transaction timestamp |
-| `UnitPrice` | Price per unit (GBP) |
-| `CustomerID` | Unique customer identifier |
-| `Country` | Customer location |
+The dataset includes transactional data from an online retailer, with the following key columns:
 
-**Data Issues Handled:**
-- 24.93% missing CustomerIDs
-- 0.27% missing Descriptions
-- Negative quantities/prices (cancellations)
-- Outliers and anomalies
+- **InvoiceNo** → Unique transaction ID. Transactions starting with `C` indicate cancellations.  
+- **StockCode** → Unique identifier for products.  
+- **Description** → Product name.  
+- **Quantity** → Number of units bought.  
+- **InvoiceDate** → Timestamp of the transaction.  
+- **UnitPrice** → Product price per unit.  
+- **CustomerID** → Unique customer identifier.  
+- **Country** → Customer location.
 
-## 🔧 Workflow
-```mermaid
-graph TD
-    A[Data Loading] --> B[Exploratory Analysis]
-    B --> C[Data Cleaning]
-    C --> D[Feature Engineering]
-    D --> E[Clustering]
-    E --> F[Recommendation System]
-    F --> G[Visualization]
-```
+---
 
-## 🔍 Key Insights
-### Quantitative Overview
-| Metric | Value | Insight |
-|--------|-------|---------|
-| Avg. Quantity | 9.55 | Extreme range (-80,995 to 80,995) |
-| Avg. Unit Price | £4.61 | Outliers up to £38,970 |
-| Top Product | "WHITE HANGING HEART T-LIGHT HOLDER" | 2,369 purchases |
+## ⚙️ Methodology
 
-### Data Quality
-![Missing Values](https://via.placeholder.com/600x200?text=Missing+Values+Chart+24.93%+CustomerID+0.27%+Description)
+1. **Preprocessing**  
+   - Removed cancellations & duplicates  
+   - Filtered non-positive quantities/prices  
+   - Handled missing `CustomerID`  
+   - Scaled features using `StandardScaler`
 
-## 👥 Cluster Profiles
-### K-Means Segmentation (3 Clusters)
+2. **Outlier Detection**  
+   - Used `IsolationForest` to remove noisy data
 
-| Cluster | Profile | Key Characteristics |
-|---------|---------|----------------------|
-| 0 | **Sporadic Shoppers** | Low spend, weekend purchases, stable pattern |
-| 1 | **Big Spenders** | High-value transactions, increasing trend |
-| 2 | **Frequent Buyers** | High cancellations, unpredictable behavior |
+3. **Dimensionality Reduction**  
+   - Applied **PCA** to project data into fewer dimensions for visualization & clustering
 
-![Cluster Visualization](https://via.placeholder.com/600x400?text=PCA+Cluster+Visualization)
+4. **Clustering**  
+   - Determined optimal `k` using **Elbow Method** and **Silhouette Score**  
+   - Applied **K-Means** clustering on PCA-transformed data
 
-## 📊 Visualizations
-1. **Elbow Method for Optimal Clusters**
-![Elbow Plot](https://via.placeholder.com/400x300?text=Elbow+Method+Plot)
+5. **Interpretation**  
+   - Created **Radar Chart** to compare behavioral profiles  
+   - Cluster distribution & feature breakdown for business actions
 
-2. **Silhouette Analysis**
-![Silhouette Plot](https://via.placeholder.com/400x300?text=Silhouette+Analysis)
+---
 
-3. **Radar Chart Comparison**
-![Radar Chart](https://via.placeholder.com/500x400?text=Cluster+Radar+Chart)
+## 📈 Visualizations & Insights
 
-## 🎯 Recommendation System
-**How It Works:**
-1. Identifies top 10 products per cluster
-2. Recommends top 3 unpurchased items per customer
-3. Handles outliers separately
+
+### 1. 🧼 Missing Value plot
+<img width="1621" height="520" alt="image" src="https://github.com/user-attachments/assets/c732d3c5-b737-4cfe-8521-11dc5b984dac" />
+
+> Highlights missing `CustomerID` — which were either dropped or grouped under anonymous.
+
+---
+
+### 2. 🔎 Correlation Matrix  
+<img width="743" height="684" alt="image" src="https://github.com/user-attachments/assets/7ab6358b-e767-4589-9059-d9d392be129e" />
+> Helps detect redundant or strongly related features before PCA.
+
+---
+
+### 3. 📉 PCA - Explained Variance  
+<img width="875" height="481" alt="image" src="https://github.com/user-attachments/assets/6dc391bb-7ef8-4cda-92ef-366e26bc2682" />
+ 
+> First 2 components explain ~80% variance — ideal for visualization.
+
+---
+
+### 4. 🧭 PCA - 2D Projection  
+<img width="988" height="460" alt="image" src="https://github.com/user-attachments/assets/2e109200-596b-4aaf-add3-0640c35c7ba6" />
+
+> Reveals natural grouping potential before clustering.
+
+---
+
+### 5. 💡 Elbow Method  
+![Uploading image.png…]()
+
+> Shows inertia curve — elbow at `k=3` indicates optimal number of clusters.
+
+---
+
+### 6. 📐 Silhouette Scores  
+![Silhouette](images/silhouette_score.png)  
+> Validates that 3 clusters are distinct and not overlapping.
+
+---
+
+### 7. 🎯 KMeans Clustering  
+![Clusters](images/kmeans_clusters.png)  
+> Final cluster allocation in 2D PCA space.
+
+---
+
+### 8. 🕸️ Radar Chart - Cluster Profiles  
+![Radar](images/radar_chart.png)  
+> Cluster profiles based on features like `recency`, `frequency`, `monetary`.  
+> - Cluster 0: Infrequent, low spenders  
+> - Cluster 1: Loyal and frequent buyers  
+> - Cluster 2: Frequent but low-value spenders  
+
+> 💬 “Radar chart was extremely helpful to compare segment characteristics intuitively.”
+
+---
+
+### 9. 📊 Cluster Distribution  
+![Cluster Histogram](images/cluster_histogram.png)  
+> Bar chart showing the size of each segment. Useful for strategy scaling.
+
+---
+
+### 10. 📈 Feature Distribution by Cluster  
+![Feature Clusters](images/feature_per_cluster.png)  
+> Helps explain which behaviors dominate each group (e.g., spending, visit recency).
+
+---
+
+## 🧠 Cluster Summary & Business Implications
+
+| Cluster | Description                  | Actionable Insight                  |
+|---------|------------------------------|-------------------------------------|
+| 0       | Low spend, infrequent buyers | Re-engage via promotions            |
+| 1       | High spend, frequent         | Loyalty program, VIP marketing      |
+| 2       | Frequent but low spenders    | Upsell or bundle products           |
+
+---
+
+## 📁 Project Structure
 
