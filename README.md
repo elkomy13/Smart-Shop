@@ -41,44 +41,44 @@ The dataset includes transactional data from an online retailer, with the follow
    1. RFM (Recency, Frequency, Monetary) Features
       - Recency (R):
       
-         Days_Since_Last_Purchase: Days since last purchase (lower = more recent engagement).
+         - Days_Since_Last_Purchase: Days since last purchase (lower = more recent engagement).
       
       - Frequency (F):
       
-         Total_Transactions: Total transactions per customer.
+         - Total_Transactions: Total transactions per customer.
          
-         Total_Products_Purchased: Total quantity of products purchased.
+         - Total_Products_Purchased: Total quantity of products purchased.
       
       - Monetary (M):
       
-         Total_Spend: Total money spent by the customer.
+         - Total_Spend: Total money spent by the customer.
          
-         Average_Transaction_Value: Mean transaction value (Total_Spend / Total_Transactions).
+         - Average_Transaction_Value: Mean transaction value (Total_Spend / Total_Transactions).
       
    2. Product Diversity
-         Unique_Products_Purchased: Count of distinct products bought.
+         - Unique_Products_Purchased: Count of distinct products bought.
       
    3. Behavioral Features
-         Average_Days_Between_Purchases: Avg. days between purchases.
+         - Average_Days_Between_Purchases: Avg. days between purchases.
       
-         Day_Of_Week: Preferred shopping day (0=Monday, 6=Sunday).
+         - Day_Of_Week: Preferred shopping day (0=Monday, 6=Sunday).
       
-         Hour: Preferred shopping hour (24h format).
+         - Hour: Preferred shopping hour (24h format).
       
    4. Geographic Features
-         Is_UK: Binary (1 if UK-based, 0 otherwise).
+         - Is_UK: Binary (1 if UK-based, 0 otherwise).
       
    5. Cancellation Insights
-         Cancellation_Frequency: Total canceled transactions.
+         - Cancellation_Frequency: Total canceled transactions.
       
-         Cancellation_Rate: Canceled transactions ratio (Cancellation_Frequency /          Total_Transactions).
+         - Cancellation_Rate: Canceled transactions ratio (Cancellation_Frequency / Total_Transactions).
       
    6. Seasonality & Trends
-         Monthly_Spending_Mean: Avg. monthly spend.
+         - Monthly_Spending_Mean: Avg. monthly spend.
       
-         Monthly_Spending_Std: Volatility in monthly spend.
+         - Monthly_Spending_Std: Volatility in monthly spend.
       
-         Spending_Trend: Spending trend slope (+=increasing, -=decreasing).
+         - Spending_Trend: Spending trend slope (+=increasing, -=decreasing).
          
 3. **Outlier Detection**  
    - Used `IsolationForest` to remove noisy data
