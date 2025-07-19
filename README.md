@@ -152,7 +152,8 @@ The dataset includes transactional data from an online retailer, with the follow
         
       - video demo:
 
-         ![recommendation](https://github.com/user-attachments/assets/f0d47245-67e9-4028-8b79-fd902e46deb4)
+
+![recommendation](https://github.com/user-attachments/assets/43d33948-82a6-46d2-9aca-223b4803f8d6)
 
 
 
