@@ -55,25 +55,25 @@ The dataset includes transactional data from an online retailer, with the follow
          
          Average_Transaction_Value: Mean transaction value (Total_Spend / Total_Transactions).
       
-      2. Product Diversity
+   2. Product Diversity
          Unique_Products_Purchased: Count of distinct products bought.
       
-      3. Behavioral Features
+   3. Behavioral Features
          Average_Days_Between_Purchases: Avg. days between purchases.
       
          Day_Of_Week: Preferred shopping day (0=Monday, 6=Sunday).
       
          Hour: Preferred shopping hour (24h format).
       
-      4. Geographic Features
+   4. Geographic Features
          Is_UK: Binary (1 if UK-based, 0 otherwise).
       
-      5. Cancellation Insights
+   5. Cancellation Insights
          Cancellation_Frequency: Total canceled transactions.
       
          Cancellation_Rate: Canceled transactions ratio (Cancellation_Frequency /          Total_Transactions).
       
-      6. Seasonality & Trends
+   6. Seasonality & Trends
          Monthly_Spending_Mean: Avg. monthly spend.
       
          Monthly_Spending_Std: Volatility in monthly spend.
@@ -97,9 +97,9 @@ The dataset includes transactional data from an online retailer, with the follow
 4. **Dimensionality Reduction**  
    - Applied **PCA** to project data into fewer dimensions for visualization & clustering
      
-   - <img width="1636" height="874" alt="image" src="https://github.com/user-attachments/assets/4431f4ea-dda5-4d9b-a5de-468837c585ae" />
+    <img width="1636" height="874" alt="image" src="https://github.com/user-attachments/assets/4431f4ea-dda5-4d9b-a5de-468837c585ae" />
    
-   - From the plot, we can see that the increase in cumulative variance starts to slow down          after the 6th component (which captures about 81% of the total variance).
+   - From the plot, we can see that the increase in cumulative variance starts to slow down after the 6th component (which captures about 81% of the total variance).
 
 
 5. **Clustering**  
@@ -123,7 +123,9 @@ The dataset includes transactional data from an online retailer, with the follow
      <img width="855" height="407" alt="image" src="https://github.com/user-attachments/assets/5409c9f5-0206-4ad5-9bee-1fab0139c4fd" />
 
    - Evaluation Metrics
-     <img width="548" height="242" alt="image" src="https://github.com/user-attachments/assets/cca23bd3-079c-407f-82cc-515c2b8c9919" />
+  
+     
+        <img width="548" height="242" alt="image" src="https://github.com/user-attachments/assets/cca23bd3-079c-407f-82cc-515c2b8c9919" />
 
         1. **The Silhouette Score** of approximately 0.236, although not close to 1, still indicates a fair amount of separation between the clusters. It suggests that the clusters are somewhat distinct, but                   there might be slight overlaps between them. Generally, a score closer to 1 would be ideal, indicating more distinct and well-separated clusters.
         
@@ -147,9 +149,10 @@ The dataset includes transactional data from an online retailer, with the follow
    
    7. **Recommendation System**
       - I am set to develop a recommendation system to enhance the online shopping experience. This system will suggest products to customers based on the purchasing patterns prevalent in their respective                clusters.
-      video demo:
+        
+      - video demo:
 
-![recommendation](https://github.com/user-attachments/assets/f0d47245-67e9-4028-8b79-fd902e46deb4)
+         ![recommendation](https://github.com/user-attachments/assets/f0d47245-67e9-4028-8b79-fd902e46deb4)
 
 
 
